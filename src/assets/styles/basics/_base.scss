@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: robotoLight, sans-serif;
+    line-height: 2;
+    color: $clr1;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $clr2;
+    height: 100%;
+}
+
+img {
+    width: 100%;
+}
+
+a{
+    font-family: robotoBold, sans-serif;
+    text-decoration: none;
+    color: inherit;
+}
