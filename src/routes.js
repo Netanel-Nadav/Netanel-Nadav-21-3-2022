@@ -1,5 +1,5 @@
 import { HomePage } from './pages/HomePage.jsx'
-import { AboutUs } from './pages/AboutUs.jsx'
+import { Favorites } from './pages/Favorites.jsx'
 
 
 const routes = [
@@ -9,9 +9,9 @@ const routes = [
         label: 'Home',
     },
     {
-        path: 'about',
-        component: <AboutUs />,
-        label: 'About Us'
+        path: 'favorites',
+        component: <Favorites />,
+        label: 'Favorites'
     },
 ]
 
