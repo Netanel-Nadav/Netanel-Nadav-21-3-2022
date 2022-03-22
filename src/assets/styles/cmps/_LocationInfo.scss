@@ -1,3 +1,17 @@
 .location-info {
-    padding: 10px 0px;
+    margin: 1.2rem 0px;
+    h1 {
+        margin: 0;
+    }
+
+    .wrraper {
+        gap: 10px;
+        .far {
+            font-size: rem(18px);
+            color: $clr1;
+            &:hover{
+                color: $clr5;
+            }
+        }
+    }
 }

@@ -2,12 +2,12 @@ import React from 'react'
 import { ForecastPreview } from './ForecastPreview'
 
 
-export const ForecastList = ({forecasts}) => {
+export const ForecastList = ({forecasts, isCelcius}) => {
 
   if (!forecasts) return 'Loading..'
   return (
     <section className="forecast-list grid-cards">
-      {forecasts.map(dailyForecast => <ForecastPreview key={dailyForecast._id} dailyForecast={dailyForecast} />)}
+      {forecasts.map(dailyForecast => <ForecastPreview key={dailyForecast._id} dailyForecast={dailyForecast} isCelcius={isCelcius}/>)}
     </section>
   )
 }

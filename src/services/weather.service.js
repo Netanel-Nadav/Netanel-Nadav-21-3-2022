@@ -15,13 +15,13 @@ async function query(searchLocation) {
     if (!searchLocation) searchLocation = 'Tel aviv'
     const res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${searchLocation}&apikey=${API_KEY}`)
     const location = res.data[0]
-    
+
     const locationKey = location.Key
     const forecasts = await getDailyForecasts(locationKey)
     forecasts.forEach(daily => {
         return daily._id = utilService.makeId()
     })
-    return {location, forecasts}
+    return { location, forecasts }
 }
 
 
@@ -34,5 +34,26 @@ async function getLocationByGeo(userCoords) {
 
 async function getDailyForecasts(locationKey) {
     const res = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${API_KEY}`)
-    return res.data.DailyForecasts
+    const dailyForecasts = res.data.DailyForecasts;
+    const dailyWeather = dailyForecasts.map(dailyForecast => {
+        return {
+            date: dailyForecast.Date,
+            day: dailyForecast.Day,
+            night: dailyForecast.Night,
+            temp: {
+                celsius: {
+                    max: +((dailyForecast.Temperature.Maximum.Value - 32) * 5 / 9).toFixed(),
+                    min: +((dailyForecast.Temperature.Minimum.Value - 32) * 5 / 9).toFixed(),
+                    unit: 'C'
+                },
+                fahrenheit: {
+                    max: dailyForecast.Temperature.Maximum.Value,
+                    min: dailyForecast.Temperature.Minimum.Value,
+                    unit: 'F'
+                }
+            }
+        }
+    })
+    return dailyWeather
 }
+

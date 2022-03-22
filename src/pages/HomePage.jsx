@@ -9,6 +9,7 @@ export const HomePage = () => {
 
   const [searchTerm, setSearchTerm] = useState('')
   const [userCoords, setUserCoords] = useState(null)
+  const [isCelcius, setIsCelcius] = useState(true)
 
   const { location, forecasts } = useSelector(state => state.weatherModule)
   const dispatch = useDispatch()
@@ -29,8 +30,13 @@ export const HomePage = () => {
     })
   }
 
+  const toggleTemp = () => {
+    setIsCelcius(!isCelcius)
+  }
+
+
   if (!location) return 'Loading...'
-  
+
   return (
     <section className='home'>
       <h1>Welcome to My weather App</h1>
@@ -41,8 +47,8 @@ export const HomePage = () => {
           value={searchTerm}
           onChange={(ev) => setSearchTerm(ev.target.value)} />
       </div>
-      <LocationInfo location={location} />
-      <ForecastList forecasts={forecasts} />
+      <LocationInfo location={location} toggleTemp={toggleTemp} isCelcius={isCelcius} />
+      <ForecastList forecasts={forecasts} isCelcius={isCelcius}/>
     </section>
   );
 }
