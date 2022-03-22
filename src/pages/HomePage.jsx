@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDailyForecasts, loadLocation, loadLocationByGeo } from '../store/actions/weather.action';
 
 import { ForecastList } from '../components/ForecastList';
+import { LocationInfo } from '../components/LocationInfo';
 
 export const HomePage = () => {
 
   const [searchTerm, setSearchTerm] = useState('')
   const [userCoords, setUserCoords] = useState(null)
 
-  const { location, forecast } = useSelector(state => state.weatherModule)
+  const { location, forecasts } = useSelector(state => state.weatherModule)
   const dispatch = useDispatch()
 
 
@@ -28,8 +29,8 @@ export const HomePage = () => {
     })
   }
 
-  if (!location && forecast) return 'Loading...'
-
+  if (!location) return 'Loading...'
+  
   return (
     <section className='home'>
       <h1>Welcome to My weather App</h1>
@@ -40,7 +41,8 @@ export const HomePage = () => {
           value={searchTerm}
           onChange={(ev) => setSearchTerm(ev.target.value)} />
       </div>
-      <ForecastList forecast={forecast} />
+      <LocationInfo location={location} />
+      <ForecastList forecasts={forecasts} />
     </section>
   );
 }

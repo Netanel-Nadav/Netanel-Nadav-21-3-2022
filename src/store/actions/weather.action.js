@@ -4,9 +4,9 @@ import { weatherService } from "../../services/weather.service"
 export function loadLocation(searchTerm) {
     return async (dispatch) => {
         try {
-            const { location, forecast } = await weatherService.query(searchTerm)
+            const { location, forecasts } = await weatherService.query(searchTerm)
             dispatch({ type: 'SET_LOCATION', location })
-            dispatch({ type: 'SET_DAILY_FORECAST', forecast })
+            dispatch({ type: 'SET_DAILY_FORECAST', forecasts })
         } catch (err) {
             console.log('Coulden\'t Get data');
         }

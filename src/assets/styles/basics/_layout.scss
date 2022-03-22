@@ -22,3 +22,10 @@
         @include layoutGTC($padded-break-wide);
     }
 }
+
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(174px, 1fr) );
+    gap: 15px;
+}

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { utilService } from "./util.service"
 
 const API_KEY = '2ZMBkNNe2iuS7vhFgVnqexAODDCYcWBH'
 
@@ -16,8 +17,11 @@ async function query(searchLocation) {
     const location = res.data[0]
     
     const locationKey = location.Key
-    const forecast = await getDailyForecasts(locationKey)
-    return {location, forecast}
+    const forecasts = await getDailyForecasts(locationKey)
+    forecasts.forEach(daily => {
+        return daily._id = utilService.makeId()
+    })
+    return {location, forecasts}
 }
 
 

@@ -3,8 +3,8 @@
 }
 
 html {
-    font-family: robotoLight, sans-serif;
-    line-height: 2;
+    font-family: roboto, sans-serif;
+    line-height: 1;
     color: $clr1;
     height: 100%;
 }
@@ -20,8 +20,31 @@ img {
     width: 100%;
 }
 
+h1,h2,h3,h4,h5 {
+    margin: 0px 0px 1.2rem;
+    padding: 0;
+}
+
+p, small {
+    margin: 0;
+    padding: 0;
+}
+
+
 a{
     font-family: robotoBold, sans-serif;
     text-decoration: none;
     color: inherit;
+}
+
+small {
+    text-transform: uppercase;
+    font-family: robotoBold, sans-serif;
+    color: $clr3;
+    letter-spacing: 0.5px;
+    font-size: rem(10px);
+}
+
+header {
+    margin-bottom: 1.2rem;
 }

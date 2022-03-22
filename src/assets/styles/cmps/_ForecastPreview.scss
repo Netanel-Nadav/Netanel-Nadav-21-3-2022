@@ -1,0 +1,31 @@
+.forecast-preview{
+    border: 1px solid rgba($clr1, 0.2);
+    box-shadow: 0px 0px 10px rgba($clr1, 0.2);
+    .card-header {
+        position: relative;
+        margin-bottom: 1.2rem;
+        .icon {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            z-index: 1;
+            transform: translateX(-50%);
+            max-width: 120px;
+        }
+    }
+
+    .card-body {
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid rgba($clr1, 0.2);
+        min-height: 150px;
+        
+        p {
+            font-size: rem(14px);
+        }
+    }
+    
+    .card-footer {
+        padding: 10px;
+    }
+}
