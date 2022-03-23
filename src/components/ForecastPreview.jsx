@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-// imgs
+// Imgs
 import dayImg from '../assets/img/Sky.svg'
 import nightImg from '../assets/img/Night.svg'
 

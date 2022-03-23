@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
+// Actions
 import { clearMsg } from '../store/actions/favorites.action'
+
+
 
 export const UserMsg = () => {
 

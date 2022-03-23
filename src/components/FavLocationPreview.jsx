@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
+// Actions
 import { remove } from '../store/actions/favorites.action'
 
-
+// Imgs
 import dayImg from '../assets/img/Sky.svg'
 import nightImg from '../assets/img/Night.svg'
 

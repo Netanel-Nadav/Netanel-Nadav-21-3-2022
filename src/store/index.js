@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunk from 'redux-thunk'
 
-
+// Reducers
 import { weatherReducer } from './reducers/weather.reducer.js'
 import { favoritesReducer } from './reducers/favorites.reducer.js'
 

@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom'
 
-
 import routes from '../routes'
+
+// Actions
 import { changeMode } from '../store/actions/weather.action';
+
+
 
 export function Navigation() {
 
@@ -36,7 +39,7 @@ export function Navigation() {
 
                 <Link to={'/'}>
                     <div className='logo-container'>
-                        <span>Logo Here</span>
+                        <span>My Weather App</span>
                     </div>
                 </Link>
                 <ul className={`${isMenuOpen ? 'open' : ''} clean-list flex justify-center align-center`}>

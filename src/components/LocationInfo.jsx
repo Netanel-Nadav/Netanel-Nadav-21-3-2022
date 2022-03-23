@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+
 
 export const LocationInfo = ({ location, toggleTemp, isCelcius, onAddToFavorites }) => {
+    
     const { LocalizedName } = location
-
-
 
     return (
         <div className="location-info flex space-between align-center">

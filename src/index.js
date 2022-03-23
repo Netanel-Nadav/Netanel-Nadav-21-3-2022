@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { RootCmp } from './RootCmp';
-import { BrowserRouter as Router } from 'react-router-dom'
 
 // Redux
 import { Provider } from 'react-redux';
-import {store} from './store'
+import { store } from './store'
 
 // Styles
 import "./assets/styles/main.scss"

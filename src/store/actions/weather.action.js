@@ -1,4 +1,3 @@
-import { favoritesService } from "../../services/favorites.service"
 import { weatherService } from "../../services/weather.service"
 
 

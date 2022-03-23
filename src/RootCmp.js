@@ -4,10 +4,15 @@ import { useDispatch } from 'react-redux';
 import routes from './routes'
 
 
+// Components
 import { Footer } from './components/Footer';
 import { Navigation } from './components/Navigation';
 import { UserMsg } from './components/UserMsg';
+
+// Actions
 import { query } from './store/actions/favorites.action';
+
+
 
 export function RootCmp() {
 

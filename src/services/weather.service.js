@@ -1,7 +1,5 @@
 import axios from "axios"
-
 import { utilService } from "./util.service"
-import { storageService } from "./async-storage.service"
 
 const API_KEY = 'WPFXrTN5AzVNwgMqXADLOLAOU1s6GzZ6'
 

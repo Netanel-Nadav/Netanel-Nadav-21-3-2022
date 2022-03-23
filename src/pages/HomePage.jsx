@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDailyForecasts, loadLocation, loadLocationByGeo } from '../store/actions/weather.action';
 
+// Components
 import { ForecastList } from '../components/ForecastList';
 import { LocationInfo } from '../components/LocationInfo';
+
+// Actions
 import { addToFavorites } from '../store/actions/favorites.action';
+import { loadLocation, loadLocationByGeo } from '../store/actions/weather.action';
+
+// Debounce 
 import { debounce } from 'lodash';
+
+
 
 export const HomePage = () => {
 
@@ -40,13 +47,10 @@ export const HomePage = () => {
 
   }
 
-
-
   const debouncedTerm = useCallback(
     debounce((term) => dispatch(loadLocation(term)), 500),
     []
   )
-
 
   const toggleTemp = () => {
     setIsCelcius(!isCelcius)
