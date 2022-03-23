@@ -3,11 +3,13 @@ import thunk from 'redux-thunk'
 
 
 import { weatherReducer } from './reducers/weather.reducer.js'
+import { favoritesReducer } from './reducers/favorites.reducer.js'
 
 
 const rootReducer = combineReducers({
     weatherModule: weatherReducer,
-   
+    favoritesModule: favoritesReducer,
+
 })
 
 

@@ -2,6 +2,10 @@ nav {
   height: 65px;
   background-color: $clr3;
 
+  &.dark {
+    background-color: $clr1;
+  }
+
   .main-screen {
     position: fixed;
     top: 0;
@@ -11,6 +15,7 @@ nav {
     background-color: rgba(#000, .7);
     display: none;
     cursor: pointer;
+    z-index: 5;
 
     &.open {
       display: block;
@@ -46,6 +51,7 @@ nav {
     top: 0;
     box-shadow: 0px 0px 10px rgba(#000, .5);
     flex-direction: column;
+    z-index: 10;
 
     transition: left .3s ease-in-out;
 
@@ -63,11 +69,6 @@ nav {
 
     li {
       margin-inline-end: 10px;
-    
-      a {
-
-      }
-
     }
   }
 }

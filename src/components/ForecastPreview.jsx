@@ -78,7 +78,7 @@ export const ForecastPreview = ({ dailyForecast, isCelcius }) => {
         {!isCelcius && <span>{isNight ? fahrenheit.min : fahrenheit.max} {fahrenheit.unit} °</span>}
       </div>
       <div className="card-footer">
-        <span>Like</span>
+        <span>{isNight ? 'Night' : 'Day'}</span>
       </div>
     </section>
   )

@@ -1,13 +1,16 @@
 import axios from "axios"
-import { utilService } from "./util.service"
 
-const API_KEY = '2ZMBkNNe2iuS7vhFgVnqexAODDCYcWBH'
+import { utilService } from "./util.service"
+import { storageService } from "./async-storage.service"
+
+const API_KEY = 'TTg4v4ttLyWXgh0M5GlwR0cnRk7PHOWF'
 
 
 export const weatherService = {
     query,
     getLocationByGeo,
-    getDailyForecasts
+    getDailyForecasts,
+    getLocationWeather
 }
 
 
@@ -31,6 +34,21 @@ async function getLocationByGeo(userCoords) {
     return res.data
 }
 
+
+async function getLocationWeather(locationKey) {
+    const res = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${API_KEY}`)
+    const weather = res.data
+    
+    // delete weather.EpochTime
+    // delete weather.HasPrecipitation
+    // delete weather.Link
+    // delete weather.LocalObservationDateTime
+    // delete weather.MobileLink
+    // delete weather.PrecipitationType
+
+    // console.log(weather);
+    return weather
+}
 
 async function getDailyForecasts(locationKey) {
     const res = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${API_KEY}`)
@@ -56,4 +74,3 @@ async function getDailyForecasts(locationKey) {
     })
     return dailyWeather
 }
-

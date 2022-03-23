@@ -1,3 +1,4 @@
+import { favoritesService } from "../../services/favorites.service"
 import { weatherService } from "../../services/weather.service"
 
 
@@ -35,6 +36,18 @@ export function getDailyForecasts(locationKey) {
             dispatch(action)
         } catch (err) {
             console.log('Coulden\'t Get daily Forecast');
+        }
+    }
+}
+
+
+export function changeMode() {
+    return async (dispatch) => {
+        try {
+            const action = {type: 'CHANGE_MODE'}
+            dispatch(action)
+        } catch (err) {
+            console.log(err);
         }
     }
 }
