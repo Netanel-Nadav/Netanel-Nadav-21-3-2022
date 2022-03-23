@@ -3,7 +3,7 @@ import React from 'react'
 export const Footer = () => {
   return (
     <footer className='full'>
-        <em>All coporights saves</em>
+        <em>All copyrights reserved</em>
     </footer>
   )
 }

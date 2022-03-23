@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { query } from '../store/actions/favorites.action';
 
 
 export function Favorites() {
@@ -8,9 +7,6 @@ export function Favorites() {
   const { favLocations } = useSelector(state => state.favoritesModule)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(query())
-  }, [])
 
 
   console.log(favLocations);

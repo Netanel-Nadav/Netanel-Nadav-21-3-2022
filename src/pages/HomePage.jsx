@@ -17,12 +17,19 @@ export const HomePage = () => {
   const dispatch = useDispatch()
 
 
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success)
-      // if (userCoords) dispatch(loadLocationByGeo(userCoords))
-      debouncedTerm(searchTerm)
+  }, [])
+
+
+  useEffect(() => {
+    dispatch(loadLocationByGeo(userCoords))
+  }, [userCoords])
+
+  useEffect(() => {
+    debouncedTerm(searchTerm)
   }, [searchTerm])
+
 
   const success = (pos) => {
     const crd = pos.coords;
@@ -30,7 +37,9 @@ export const HomePage = () => {
       lat: crd.latitude,
       long: crd.longitude
     })
+
   }
+
 
 
   const debouncedTerm = useCallback(
@@ -49,7 +58,6 @@ export const HomePage = () => {
   }
 
   if (!location) return 'Loading...'
-
   return (
     <section className='home'>
       <h1>Welcome to My weather App</h1>
