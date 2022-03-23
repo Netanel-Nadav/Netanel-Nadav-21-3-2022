@@ -41,7 +41,7 @@ export function Navigation() {
                 </Link>
                 <ul className={`${isMenuOpen ? 'open' : ''} clean-list flex justify-center align-center`}>
                     {routes.map(route => <li key={route.path}><NavLink to={route.path} onClick={toggleMenu}>{route.label}</NavLink></li>)}
-                    <button onClick={onChangeMode}>{isDarkMode ? '☀' : '🌑'}</button>
+                    {/* <button onClick={onChangeMode}>{isDarkMode ? '☀' : '🌑'}</button> */}
                 </ul>
             </div>
         </nav>

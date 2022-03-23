@@ -23,10 +23,24 @@ export function addToFavorites(location) {
         } catch (err) {
             console.log('Coulden\'t Add location to favorites');
             dispatch({type: 'SET_MSG', msg: {type: 'error', txt: 'Coulden\'t Add location to favorites'}})
-
         }
     }
 }
+
+
+export function remove(locationId) {
+    return async (dispatch) => {
+        try {
+            await favoritesService.remove(locationId)
+            dispatch({type: 'REMOVE_LOCATION', locationId})
+            dispatch({type: 'SET_MSG', msg: {type: 'sucess', txt: 'Location Removed from your favorites'}})
+        } catch (err) {
+            console.log('Coulden\'t remove location to favorites', err);
+            dispatch({type: 'SET_MSG', msg: {type: 'error', txt: 'Coulden\'t Remove location to favorites'}})
+        }
+    }
+}
+
 
 export function clearMsg() {
     return async (dispatch) => {
@@ -38,3 +52,4 @@ export function clearMsg() {
         }
     }
 }
+

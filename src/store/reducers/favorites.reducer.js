@@ -16,8 +16,11 @@ export function favoritesReducer(state = initialState, action) {
             newState = { ...state, favLocations: [...state.favLocations, action.favLocation] }
             break;
 
-
-        default:
+        case 'REMOVE_LOCATION':
+            newState = {...state, favLocations: state.favLocations.filter(favLocation => favLocation._id !== action.locationId)}
+            break;
+        
+            default:
             return newState
         }
 

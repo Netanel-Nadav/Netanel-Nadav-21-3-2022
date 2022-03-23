@@ -23,11 +23,11 @@ export const HomePage = () => {
 
 
   useEffect(() => {
-    dispatch(loadLocationByGeo(userCoords))
+    if (userCoords) dispatch(loadLocationByGeo(userCoords))
   }, [userCoords])
 
   useEffect(() => {
-    debouncedTerm(searchTerm)
+    if (searchTerm) debouncedTerm(searchTerm)
   }, [searchTerm])
 
 

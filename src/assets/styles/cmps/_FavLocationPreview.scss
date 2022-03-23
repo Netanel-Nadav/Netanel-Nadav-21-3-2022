@@ -1,0 +1,41 @@
+.fav-location-preview{
+        border: $border;
+        box-shadow: 0px 0px 10px rgba($clr1, 0.2);
+        .card-header {
+            position: relative;
+            margin-bottom: $baseMargin;
+            background-position: center;
+            background-size: cover;
+            min-height: 150px;
+            .icon {
+                position: absolute;
+                bottom: -20px;
+                left: 50%;
+                z-index: 1;
+                transform: translateX(-50%);
+                max-width: 120px;
+            }
+        }
+    
+        .card-body {
+            text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid rgba($clr1, 0.2);
+            min-height: 150px;
+            
+            p {
+                font-size: rem(14px);
+                margin-bottom: $baseMargin;
+            }
+    
+            span {
+                font-family: robotoLight, sans-serif;
+                font-size: rem(30px);
+                letter-spacing: -3px;
+            }
+        }
+        
+        .card-footer {
+            padding: 10px;
+        }
+    }

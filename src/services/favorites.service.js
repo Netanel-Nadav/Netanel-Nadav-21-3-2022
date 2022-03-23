@@ -11,32 +11,30 @@ export const favoritesService = {
 }
 
 async function query() {
-    const favoviteLocations = await storageService.query(STORAGE_KEY)
-    // const formatedLocation = favoviteLocations.map(location => {
-    //     return {
-    //         weather: weatherService.getLocationWeather(location.Key),
-    //         LocalizedName: location.LocalizedName,
-    //     }
-    // })
-    // console.log(formatedLocation);
-    return favoviteLocations
+    const favoriteLocations = await storageService.query(STORAGE_KEY)
+    const formatedLocation = await Promise.all(await favoriteLocations.map(async (location) => {
+        return await weatherService.getLocationWeather(location)
+    }))
+    return formatedLocation
 }
 
 async function add(location) {
-    const locations =  await query(STORAGE_KEY)
+    const locations = await query(STORAGE_KEY)
+    const { weather } = await weatherService.getLocationWeather(location)
     locations.find(loc => {
         if (loc.Key === location.Key) throw new Error('Location already in favorites')
-    })     
-        delete location.AdministrativeArea
-        delete location.Country
-        delete location.Rank
-        delete location.Type
-        delete location.Version
-   
+    })
+    delete location.AdministrativeArea
+    delete location.Country
+    delete location.Rank
+    delete location.Type
+    delete location.Version
+
+    location.weather = weather
     const addedFavLocation = await storageService.post(STORAGE_KEY, location)
     return addedFavLocation
 }
 
-async function remove(location) {
-    await storageService.remove(STORAGE_KEY, location)
+async function remove(locationId) {
+    await storageService.remove(STORAGE_KEY, locationId)
 }

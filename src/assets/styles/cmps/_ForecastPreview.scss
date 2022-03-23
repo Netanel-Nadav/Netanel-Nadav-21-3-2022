@@ -1,6 +1,7 @@
 .forecast-preview{
     border: $border;
     box-shadow: 0px 0px 10px rgba($clr1, 0.2);
+    background-color: $clr2;
     .card-header {
         position: relative;
         margin-bottom: $baseMargin;
