@@ -12,6 +12,13 @@
         button {
             font-size: rem(10px);
             padding: 7px;
+            color: $clr1;
+            &:hover {
+                color: $clr2;
+            }
+            .dark & {
+                color: $clr2;
+            }
             @include for-normal-layout {
                 font-size: rem(12px);
                 padding: 10px 15px;
@@ -26,6 +33,22 @@
         .far {
             font-size: rem(18px);
             color: $clr1;
+            cursor: pointer;
+            .dark & {
+                color: $clr2;
+            }
+            cursor: pointer;
+            &:hover{
+                color: $clr5;
+            }
+        }
+        .fas {
+            font-size: rem(18px);
+            color: red;
+            cursor: pointer;
+            .dark & {
+                color: $clr2;
+            }
             cursor: pointer;
             &:hover{
                 color: $clr5;

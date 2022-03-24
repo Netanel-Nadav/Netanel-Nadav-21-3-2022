@@ -1,7 +1,7 @@
 import axios from "axios"
 import { utilService } from "./util.service"
 
-const API_KEY = 'MgzH8ISHDNjROyCf4QdCLpSKsQNOFD7z'
+const API_KEY = 'm414ASsZUjNMIsgrer7a6yFrF7XgB4NB'
 
 
 export const weatherService = {
@@ -16,7 +16,6 @@ async function query(searchLocation) {
     const res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${searchLocation}&apikey=${API_KEY}`)
     const suggestions = res.data
     const locations = await _getWeather(suggestions[0])
-    console.log(locations);
     return {suggestions, locations}
 }
 

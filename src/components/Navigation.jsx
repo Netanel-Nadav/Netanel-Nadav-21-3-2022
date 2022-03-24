@@ -8,6 +8,10 @@ import routes from '../routes'
 import { changeMode } from '../store/actions/weather.action';
 
 
+// Imgs
+import light from '../assets/img/Light.svg'
+import dark from '../assets/img/Dark.svg'
+
 
 export function Navigation() {
 
@@ -44,7 +48,7 @@ export function Navigation() {
                 </Link>
                 <ul className={`${isMenuOpen ? 'open' : ''} clean-list flex justify-center align-center`}>
                     {routes.map(route => <li key={route.path}><NavLink to={route.path} onClick={toggleMenu}>{route.label}</NavLink></li>)}
-                    {/* <button onClick={onChangeMode}>{isDarkMode ? '☀' : '🌑'}</button> */}
+                        <img src={isDarkMode ? light : dark} onClick={onChangeMode} alt={isDarkMode ? 'Light mode' : 'Dark mode'} />
                 </ul>
             </div>
         </nav>

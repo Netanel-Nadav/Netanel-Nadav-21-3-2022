@@ -28,11 +28,11 @@ export function addToFavorites(location) {
 }
 
 
-export function remove(locationId) {
+export function remove(locationKey) {
     return async (dispatch) => {
         try {
-            await favoritesService.remove(locationId)
-            dispatch({type: 'REMOVE_LOCATION', locationId})
+            await favoritesService.remove(locationKey)
+            dispatch({type: 'REMOVE_LOCATION', locationKey})
             dispatch({type: 'SET_MSG', msg: {type: 'sucess', txt: 'Location Removed from your favorites'}})
         } catch (err) {
             console.log('Coulden\'t remove location to favorites', err);

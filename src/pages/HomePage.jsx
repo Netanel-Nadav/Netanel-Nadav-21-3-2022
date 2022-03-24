@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 // Components
 import { ForecastList } from '../components/ForecastList';
 import { LocationInfo } from '../components/LocationInfo';
 
 // Actions
-import { addToFavorites } from '../store/actions/favorites.action';
+import { addToFavorites, remove } from '../store/actions/favorites.action';
 import { loadLocation, loadLocationByGeo } from '../store/actions/weather.action';
 
 // Debounce 
@@ -23,17 +24,19 @@ export const HomePage = () => {
   const [isCelcius, setIsCelcius] = useState(true)
 
   const { location, forecasts } = useSelector(state => state.weatherModule)
+  const { favLocations } = useSelector(state => state.favoritesModule)
+  
   const dispatch = useDispatch()
-
-
+  const { city } = useParams()
+  
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success)
-  }, [])
-
-
-  useEffect(() => {
-    if (userCoords) dispatch(loadLocationByGeo(userCoords))
-  }, [userCoords])
+    if (city) {
+      dispatch(loadLocation(city))
+    } else {
+      if (userCoords) dispatch(loadLocationByGeo(userCoords))
+      else navigator.geolocation.getCurrentPosition(success)
+    }
+  }, [userCoords, city])
 
   useEffect(() => {
     if (searchTerm) debouncedTerm(searchTerm)
@@ -52,8 +55,8 @@ export const HomePage = () => {
       lat: crd.latitude,
       long: crd.longitude
     })
-
   }
+
   const debouncedTerm = useCallback(
     debounce((term) => dispatch(loadLocation(term)), 500),
     []
@@ -64,11 +67,15 @@ export const HomePage = () => {
   }
 
   const onAddToFavorites = () => {
+    console.log(location);
     dispatch(addToFavorites(location))
   }
 
-  if (!location) return 'Loading...'
+  const onRemoveFromFav = (locationKey) => {
+    dispatch(remove(locationKey))
+  }
 
+  if (!location) return 'Loading...'
   return (
     <section className='home'>
       <h1>Welcome to My weather App</h1>
@@ -77,9 +84,9 @@ export const HomePage = () => {
         <input type="text"
           placeholder='Enter Search Location'
           value={searchTerm}
-          onChange={(ev) => setSearchTerm(ev.target.value)} 
+          onChange={(ev) => setSearchTerm(ev.target.value)}
           list="cities"
-          />
+        />
         <datalist id="cities">
           {autoComplete && autoComplete.map((suggest, idx) => {
             return (
@@ -88,7 +95,7 @@ export const HomePage = () => {
           })}
         </datalist>
       </div>
-      <LocationInfo location={location} toggleTemp={toggleTemp} isCelcius={isCelcius} onAddToFavorites={onAddToFavorites} />
+      <LocationInfo onRemoveFromFav={onRemoveFromFav} favLocations={favLocations} location={location} toggleTemp={toggleTemp} isCelcius={isCelcius} onAddToFavorites={onAddToFavorites} />
       <ForecastList forecasts={forecasts} isCelcius={isCelcius} />
     </section>
   );

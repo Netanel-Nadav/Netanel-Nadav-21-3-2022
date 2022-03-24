@@ -7,7 +7,7 @@ import { remove } from '../store/actions/favorites.action'
 // Imgs
 import dayImg from '../assets/img/Sky.svg'
 import nightImg from '../assets/img/Night.svg'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { loadLocation } from '../store/actions/weather.action'
 
 
@@ -60,30 +60,27 @@ export const FavLocationPreview = ({ location }) => {
     dispatch(remove(locationId))
   }
 
-  const handleClick = (locationName) => {
-    dispatch(loadLocation(locationName))
-    navigate('/')
-  }
-
 
   const { LocalizedName, weather, _id } = location
   const { IsDayTime, Temperature, WeatherText } = weather
   const { Imperial, Metric } = Temperature
   return (
-    <div className="fav-location-preview">
-      <div className="card-header" style={{ backgroundImage: `url(${IsDayTime ? dayImg : nightImg})` }} onClick={() => handleClick(LocalizedName)}>
-        <img src={icon} alt={WeatherText} className='icon' />
+    <Link to={`/${LocalizedName}`}>
+      <div className="fav-location-preview">
+        <div className="card-header" style={{ backgroundImage: `url(${IsDayTime ? dayImg : nightImg})` }}>
+          <img src={icon} alt={WeatherText} className='icon' />
+        </div>
+        <div className="card-body">
+          <h1>{LocalizedName}</h1>
+          <small>Status</small>
+          <p>{WeatherText}</p>
+          <span>{isCelsious ? Metric.Value : Imperial.Value} {isCelsious ? Metric.Unit : Imperial.Unit} °</span>
+        </div>
+        <div className="card-footer flex space-between">
+          <button onClick={() => onRemoveLocation(_id)}>Remove</button>
+          <button onClick={toggleTemp}>{isCelsious ? 'Farenhait' : 'Celsious'}</button>
+        </div>
       </div>
-      <div className="card-body" onClick={() => handleClick(LocalizedName)}>
-        <h1>{LocalizedName}</h1>
-        <small>Status</small>
-        <p>{WeatherText}</p>
-        <span>{isCelsious ? Metric.Value : Imperial.Value} {isCelsious ? Metric.Unit : Imperial.Unit} °</span>
-      </div>
-      <div className="card-footer flex space-between">
-        <button onClick={() => onRemoveLocation(_id)}>Remove</button>
-        <button onClick={toggleTemp}>{isCelsious ? 'Farenhait' : 'Celsious'}</button>
-      </div>
-    </div>
+    </Link>
   )
 }

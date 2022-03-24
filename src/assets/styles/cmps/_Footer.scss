@@ -5,4 +5,8 @@ footer {
     font-size: rem(10px);
     color: $clr4;
 
+    .dark & {
+        background-color: $clr6;
+        color: $clr2;
+    }
 }

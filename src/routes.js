@@ -4,6 +4,10 @@ import { Favorites } from './pages/Favorites.jsx'
 
 const routes = [
     {
+        path: '/:city',
+        component: <HomePage />,
+    },
+    {
         path: '/',
         component: <HomePage />,
         label: 'Home',
@@ -13,6 +17,7 @@ const routes = [
         component: <Favorites />,
         label: 'Favorites'
     },
+   
 ]
 
 export default routes;

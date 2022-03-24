@@ -35,6 +35,6 @@ async function add(location) {
     return addedFavLocation
 }
 
-async function remove(locationId) {
-    await storageService.remove(STORAGE_KEY, locationId)
+async function remove(locationKey) {
+    await storageService.remove(STORAGE_KEY, locationKey)
 }

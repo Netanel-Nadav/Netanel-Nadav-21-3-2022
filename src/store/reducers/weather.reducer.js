@@ -2,6 +2,7 @@ const initialState = {
     location: null,
     forecasts: null,
     msg: null,
+    isDarkMode: false
 }
 
 export function weatherReducer (state = initialState, action) {

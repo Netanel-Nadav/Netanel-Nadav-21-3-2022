@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router'
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import routes from './routes'
 
 
@@ -15,7 +16,8 @@ import { query } from './store/actions/favorites.action';
 
 
 export function RootCmp() {
-
+  
+  const {isDarkMode} = useSelector(state => state.weatherModule)
   const dispatch = useDispatch()
   
   useEffect(() => {
@@ -24,7 +26,7 @@ export function RootCmp() {
 
   
   return (
-    <section className="App main-container">
+    <section className={`${isDarkMode ? 'dark' : ''} App main-container`}>
       <header className='main-container full'>
         <Navigation />
       </header>

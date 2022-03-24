@@ -1,6 +1,12 @@
 .fav-location-preview{
-        border: $border;
         box-shadow: 0px 0px 10px rgba($clr1, 0.2);
+        background-color: $clr2;
+        color: $clr1;
+
+        .dark & {
+            background-image: linear-gradient(to bottom, $clr2, $clr1);
+            color: $clr2;
+        }
         .card-header {
             position: relative;
             margin-bottom: $baseMargin;
@@ -23,6 +29,10 @@
             border-bottom: 1px solid rgba($clr1, 0.2);
             min-height: 150px;
             
+            .dark & {
+                border-bottom: 1px solid rgba($clr2, 0.2);
+            }
+
             p {
                 font-size: rem(14px);
                 margin-bottom: $baseMargin;
