@@ -17,7 +17,7 @@ export const FavLocationPreview = ({ location }) => {
 
   const [icon, setIcon] = useState(null)
   const [isCelsious, setIsCelsious] = useState(false)
-  
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -68,21 +68,21 @@ export const FavLocationPreview = ({ location }) => {
 
   const { LocalizedName, weather, _id } = location
   const { IsDayTime, Temperature, WeatherText } = weather
-  const {Imperial, Metric} = Temperature
+  const { Imperial, Metric } = Temperature
   return (
-    <div className="fav-location-preview" onClick={() => handleClick(LocalizedName)}>
-      <div className="card-header" style={{backgroundImage: `url(${IsDayTime ? dayImg : nightImg})`}}>
-        <img src={icon} alt={WeatherText} className='icon'/>
+    <div className="fav-location-preview">
+      <div className="card-header" style={{ backgroundImage: `url(${IsDayTime ? dayImg : nightImg})` }} onClick={() => handleClick(LocalizedName)}>
+        <img src={icon} alt={WeatherText} className='icon' />
       </div>
-      <div className="card-body">
+      <div className="card-body" onClick={() => handleClick(LocalizedName)}>
         <h1>{LocalizedName}</h1>
         <small>Status</small>
         <p>{WeatherText}</p>
         <span>{isCelsious ? Metric.Value : Imperial.Value} {isCelsious ? Metric.Unit : Imperial.Unit} °</span>
       </div>
       <div className="card-footer flex space-between">
-    <button onClick={() => onRemoveLocation(_id)}>Remove</button>
-    <button onClick={toggleTemp}>{isCelsious ? 'Farenhait' : 'Celsious'}</button>
+        <button onClick={() => onRemoveLocation(_id)}>Remove</button>
+        <button onClick={toggleTemp}>{isCelsious ? 'Farenhait' : 'Celsious'}</button>
       </div>
     </div>
   )

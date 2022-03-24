@@ -54,7 +54,6 @@ export const HomePage = () => {
     })
 
   }
-
   const debouncedTerm = useCallback(
     debounce((term) => dispatch(loadLocation(term)), 500),
     []
@@ -63,7 +62,6 @@ export const HomePage = () => {
   const toggleTemp = () => {
     setIsCelcius(!isCelcius)
   }
-
 
   const onAddToFavorites = () => {
     dispatch(addToFavorites(location))
