@@ -3,7 +3,6 @@
 export const LocationInfo = ({ location, toggleTemp, isCelcius, onAddToFavorites }) => {
     
     const { LocalizedName } = location
-
     return (
         <div className="location-info flex space-between align-center">
             <div className="title flex">

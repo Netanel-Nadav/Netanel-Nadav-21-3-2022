@@ -11,12 +11,14 @@ import { loadLocation, loadLocationByGeo } from '../store/actions/weather.action
 
 // Debounce 
 import { debounce } from 'lodash';
+import { weatherService } from '../services/weather.service';
 
 
 
 export const HomePage = () => {
 
   const [searchTerm, setSearchTerm] = useState('')
+  const [autoComplete, setAutoComplete] = useState('')
   const [userCoords, setUserCoords] = useState(null)
   const [isCelcius, setIsCelcius] = useState(true)
 
@@ -35,8 +37,14 @@ export const HomePage = () => {
 
   useEffect(() => {
     if (searchTerm) debouncedTerm(searchTerm)
+    loadSuggestion()
   }, [searchTerm])
 
+
+  const loadSuggestion = async () => {
+    const { suggestions } = await weatherService.query(searchTerm)
+    setAutoComplete(suggestions)
+  }
 
   const success = (pos) => {
     const crd = pos.coords;
@@ -62,6 +70,7 @@ export const HomePage = () => {
   }
 
   if (!location) return 'Loading...'
+
   return (
     <section className='home'>
       <h1>Welcome to My weather App</h1>
@@ -70,7 +79,16 @@ export const HomePage = () => {
         <input type="text"
           placeholder='Enter Search Location'
           value={searchTerm}
-          onChange={(ev) => setSearchTerm(ev.target.value)} />
+          onChange={(ev) => setSearchTerm(ev.target.value)} 
+          list="cities"
+          />
+        <datalist id="cities">
+          {autoComplete && autoComplete.map((suggest, idx) => {
+            return (
+              <option key={idx} value={suggest.LocalizedName} />
+            )
+          })}
+        </datalist>
       </div>
       <LocationInfo location={location} toggleTemp={toggleTemp} isCelcius={isCelcius} onAddToFavorites={onAddToFavorites} />
       <ForecastList forecasts={forecasts} isCelcius={isCelcius} />

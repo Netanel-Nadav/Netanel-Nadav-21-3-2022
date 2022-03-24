@@ -1,7 +1,7 @@
 import axios from "axios"
 import { utilService } from "./util.service"
 
-const API_KEY = 'WPFXrTN5AzVNwgMqXADLOLAOU1s6GzZ6'
+const API_KEY = 'MgzH8ISHDNjROyCf4QdCLpSKsQNOFD7z'
 
 
 export const weatherService = {
@@ -14,8 +14,9 @@ export const weatherService = {
 
 async function query(searchLocation) {
     const res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${searchLocation}&apikey=${API_KEY}`)
-    const location = res.data[0]
-    return _getWeather(location)
+    const suggestions = res.data
+    const locations = await _getWeather(suggestions[0])
+    return {suggestions, locations}
 }
 
 
@@ -74,10 +75,12 @@ async function getDailyForecasts(locationKey) {
 
 
 async function _getWeather(location) {
-    const locationKey = location.Key
-    const forecasts = await getDailyForecasts(locationKey)
-    forecasts.forEach(daily => {
-        return daily._id = utilService.makeId()
-    })
-    return { location, forecasts }
+    if (location) {
+        const locationKey = location.Key
+        const forecasts = await getDailyForecasts(locationKey)
+        forecasts.forEach(daily => {
+            return daily._id = utilService.makeId()
+        })
+        return { location, forecasts }
+    }
 }

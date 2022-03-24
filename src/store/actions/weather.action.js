@@ -4,7 +4,8 @@ import { weatherService } from "../../services/weather.service"
 export function loadLocation(searchTerm) {
     return async (dispatch) => {
         try {
-            const { location, forecasts } = await weatherService.query(searchTerm)
+            const { locations, suggestions } = await weatherService.query(searchTerm)
+            const {location, forecasts} = locations
             dispatch({ type: 'SET_LOCATION', location })
             dispatch({ type: 'SET_DAILY_FORECAST', forecasts })
         } catch (err) {
