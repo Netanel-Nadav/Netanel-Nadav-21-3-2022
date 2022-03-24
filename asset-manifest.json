@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Netanel-Nadav-21-3-2022/static/css/main.fcd44f4c.css",
-    "main.js": "/Netanel-Nadav-21-3-2022/static/js/main.2bf801f3.js",
+    "main.js": "/Netanel-Nadav-21-3-2022/static/js/main.cff0810d.js",
     "static/js/377.c1855308.chunk.js": "/Netanel-Nadav-21-3-2022/static/js/377.c1855308.chunk.js",
     "static/media/Night.svg": "/Netanel-Nadav-21-3-2022/static/media/Night.f08a6f592525b36eac1444af6d0dcf5f.svg",
     "static/media/Sky.svg": "/Netanel-Nadav-21-3-2022/static/media/Sky.fe09c22db05ebb7c110f2cba03ff9606.svg",
@@ -14,11 +14,11 @@
     "static/media/Dark.svg": "/Netanel-Nadav-21-3-2022/static/media/Dark.74d95cd637281f47ef00f191eb97e2de.svg",
     "index.html": "/Netanel-Nadav-21-3-2022/index.html",
     "main.fcd44f4c.css.map": "/Netanel-Nadav-21-3-2022/static/css/main.fcd44f4c.css.map",
-    "main.2bf801f3.js.map": "/Netanel-Nadav-21-3-2022/static/js/main.2bf801f3.js.map",
+    "main.cff0810d.js.map": "/Netanel-Nadav-21-3-2022/static/js/main.cff0810d.js.map",
     "377.c1855308.chunk.js.map": "/Netanel-Nadav-21-3-2022/static/js/377.c1855308.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fcd44f4c.css",
-    "static/js/main.2bf801f3.js"
+    "static/js/main.cff0810d.js"
   ]
 }
