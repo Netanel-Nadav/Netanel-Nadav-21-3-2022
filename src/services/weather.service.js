@@ -1,7 +1,7 @@
 import axios from "axios"
 import { utilService } from "./util.service"
 
-const API_KEY = 'm414ASsZUjNMIsgrer7a6yFrF7XgB4NB'
+const API_KEY = 'Ed4kSveAAtISVZ094FqYyIjA3TrlFmvf'
 
 
 export const weatherService = {
