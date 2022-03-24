@@ -7,6 +7,8 @@ import { remove } from '../store/actions/favorites.action'
 // Imgs
 import dayImg from '../assets/img/Sky.svg'
 import nightImg from '../assets/img/Night.svg'
+import { useNavigate } from 'react-router-dom'
+import { loadLocation } from '../store/actions/weather.action'
 
 
 
@@ -15,8 +17,9 @@ export const FavLocationPreview = ({ location }) => {
 
   const [icon, setIcon] = useState(null)
   const [isCelsious, setIsCelsious] = useState(false)
+  
   const dispatch = useDispatch()
-
+  const navigate = useNavigate()
 
   useEffect(() => {
     getIcon()
@@ -57,11 +60,17 @@ export const FavLocationPreview = ({ location }) => {
     dispatch(remove(locationId))
   }
 
+  const handleClick = (locationName) => {
+    dispatch(loadLocation(locationName))
+    navigate('/')
+  }
+
+
   const { LocalizedName, weather, _id } = location
   const { IsDayTime, Temperature, WeatherText } = weather
   const {Imperial, Metric} = Temperature
   return (
-    <div className="fav-location-preview">
+    <div className="fav-location-preview" onClick={() => handleClick(LocalizedName)}>
       <div className="card-header" style={{backgroundImage: `url(${IsDayTime ? dayImg : nightImg})`}}>
         <img src={icon} alt={WeatherText} className='icon'/>
       </div>

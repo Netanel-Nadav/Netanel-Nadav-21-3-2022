@@ -16,6 +16,7 @@ async function query(searchLocation) {
     const res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${searchLocation}&apikey=${API_KEY}`)
     const suggestions = res.data
     const locations = await _getWeather(suggestions[0])
+    console.log(locations);
     return {suggestions, locations}
 }
 
