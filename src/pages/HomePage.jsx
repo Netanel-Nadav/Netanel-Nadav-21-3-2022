@@ -67,7 +67,6 @@ export const HomePage = () => {
   }
 
   const onAddToFavorites = () => {
-    console.log(location);
     dispatch(addToFavorites(location))
   }
 
