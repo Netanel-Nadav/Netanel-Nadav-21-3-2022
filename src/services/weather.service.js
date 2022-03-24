@@ -13,7 +13,7 @@ export const weatherService = {
 
 
 async function query(searchLocation) {
-    const res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${searchLocation}&apikey=${API_KEY}`)
+    const res = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${searchLocation}&apikey=${API_KEY}`)
     const suggestions = res.data
     const locations = await _getWeather(suggestions[0])
     return {suggestions, locations}
@@ -22,14 +22,14 @@ async function query(searchLocation) {
 
 async function getLocationByGeo(userCoords) {
     const { lat, long } = userCoords
-    const res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${lat}%2C${long}`)
+    const res = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${lat}%2C${long}`)
     const location = res.data
     return _getWeather(location)
 }
 
 
 async function getLocationWeather(location) {
-    const res = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${location.Key}?apikey=${API_KEY}`)
+    const res = await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${location.Key}?apikey=${API_KEY}`)
     const weather = res.data[0]
 
     delete weather.EpochTime
@@ -49,7 +49,7 @@ async function getLocationWeather(location) {
 }
 
 async function getDailyForecasts(locationKey) {
-    const res = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${API_KEY}`)
+    const res = await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${API_KEY}`)
     const dailyForecasts = res.data.DailyForecasts;
     const dailyWeather = dailyForecasts.map(dailyForecast => {
         return {
